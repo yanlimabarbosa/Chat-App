@@ -1,13 +1,14 @@
 import { Request, Response } from "express"
 import prisma from "../db/prisma.js"
-import bcrypt from "bcryptjs"
+import bcryptjs from "bcryptjs"
+import { generateToken } from "../utils/generateToken.js"
 
 export const signup = async (req: Request, res: Response) => {
   try {
     const { fullname, username, password, confirmPassword, gender } = req.body
 
     if (!fullname || !username || !password || !confirmPassword || !gender) {
-      return res.status(400).json({ error: "Please fill in all the fields" })
+      return res.status(400).json({ error: "Please fill in all fields" })
     }
 
     if (password !== confirmPassword) {
@@ -20,12 +21,11 @@ export const signup = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Username already exists" })
     }
 
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, salt)
+    const salt = await bcryptjs.genSalt(10)
+    const hashedPassword = await bcryptjs.hash(password, salt)
 
-    gender === "male" ? "boy" : "girl"
-
-    const profilePic = `https://avatar.iran.liara.run/public/${gender}?username=${username}`
+    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
+    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
 
     const newUser = await prisma.user.create({
       data: {
@@ -33,11 +33,13 @@ export const signup = async (req: Request, res: Response) => {
         username,
         password: hashedPassword,
         gender,
-        profilePic,
+        profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
       },
     })
 
     if (newUser) {
+      generateToken(newUser.id, res)
+
       res.status(201).json({
         id: newUser.id,
         fullname: newUser.fullname,
@@ -49,8 +51,9 @@ export const signup = async (req: Request, res: Response) => {
     }
   } catch (error: any) {
     console.log("Error in signup controller", error.message)
-    res.status(500).json({ error: "Invalid user data" })
+    res.status(500).json({ error: "Internal Server Error" })
   }
 }
+
 export const login = async (req: Request, res: Response) => {}
 export const logout = async (req: Request, res: Response) => {}
