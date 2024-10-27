@@ -1,5 +1,5 @@
-import { ConversationContainer } from "../../components/conversation"
-import { Sidebar } from "../../components/sidebar"
+import { ConversationContainer } from "./components/conversation"
+import { Sidebar } from "./components/sidebar"
 
 export function Home() {
   return (

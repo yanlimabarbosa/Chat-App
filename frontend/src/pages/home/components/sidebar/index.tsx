@@ -1,6 +1,6 @@
 import { Conversations } from "./components/Conversations"
-import { LogoutButton } from "./components/LogoutButton"
-import { SearchInput } from "./components/SearchInput"
+import { LogoutButton } from "./components/logout-button"
+import { SearchInput } from "./components/search-input"
 
 export function Sidebar() {
   return (
