@@ -1,4 +1,4 @@
-import { TiMessages } from "react-icons/ti"
+import { TiMessages } from 'react-icons/ti'
 
 export const NoChatSelected = () => {
   return (

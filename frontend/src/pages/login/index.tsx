@@ -31,7 +31,7 @@ export function Login() {
             href=""
             className="text-sm hover:underline hover:text-blue-400 mt-2 inline-block"
           >
-            Don't have an account?
+            {`Don't have an account?`}
           </a>
 
           <div>

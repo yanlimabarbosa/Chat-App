@@ -6,7 +6,7 @@ export function Message() {
           <img
             src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
             alt="user avatar"
-          />{" "}
+          />{' '}
         </div>
       </div>
       <div className="chat-bubble text-white bg-blue-500">

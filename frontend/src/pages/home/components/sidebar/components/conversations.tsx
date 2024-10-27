@@ -1,4 +1,4 @@
-import { Conversation } from "./Conversation"
+import { Conversation } from './conversation'
 
 export function Conversations() {
   return (

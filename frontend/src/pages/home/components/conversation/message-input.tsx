@@ -1,4 +1,4 @@
-import { BsSend } from "react-icons/bs"
+import { BsSend } from 'react-icons/bs'
 
 export function MessageInput() {
   return (

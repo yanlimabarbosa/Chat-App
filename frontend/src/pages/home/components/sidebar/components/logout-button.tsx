@@ -1,4 +1,4 @@
-import { BiLogOut } from "react-icons/bi"
+import { BiLogOut } from 'react-icons/bi'
 
 export function LogoutButton() {
   return (
