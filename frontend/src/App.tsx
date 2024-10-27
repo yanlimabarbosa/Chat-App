@@ -1,8 +1,10 @@
+import { Route, Routes } from "react-router-dom"
+import { Login } from "./pages/login"
+
 export function App() {
   return (
-    <>
-      <h1 className="text-3xl text-red-500">Text</h1>
-      <button className="btn btn-primary">My button</button>
-    </>
+    <div className="p-4 h-screen flex items-center justify-center">
+      <Login />
+    </div>
   )
 }
