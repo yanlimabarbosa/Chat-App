@@ -43,14 +43,15 @@ export const AuthContextProvider: FC<{ children: ReactNode }> = ({
         const res = await api.get('/api/auth/me')
         const data = await res.json()
         if (!res.ok) {
-          throw new Error(data.error)
+          throw new Error(data?.error)
         }
         setAuthUser(data)
       } catch (error) {
         console.log(error)
+      } finally {
+        setIsLoading(false)
       }
     }
-
     fetchAuthUser()
   }, [])
 
