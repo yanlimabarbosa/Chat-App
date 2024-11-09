@@ -16,7 +16,7 @@ export function App() {
           element={authUser ? <Home /> : <Navigate to={'/login'} />}
         />
         <Route
-          path="/signup"
+          path="/sign-up"
           element={!authUser ? <SignUp /> : <Navigate to={'/'} />}
         />
         <Route
